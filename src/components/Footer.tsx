@@ -44,7 +44,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-primary-foreground/10 mt-8 pt-8 text-center">
           <p className="text-xs text-primary-foreground/60">
-            Powered by Lovable AI Website Builder
+          ©madhavbhatta11
           </p>
         </div>
       </div>
