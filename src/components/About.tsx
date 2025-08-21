@@ -42,7 +42,7 @@ const About = () => {
                 grow, and push the boundaries of what's possible.
               </p>
               <p>
-                Let's connect and build the future of technology together.
+                Let's connect and build the future of technology together. ASASP
               </p>
             </div>
           </div>
