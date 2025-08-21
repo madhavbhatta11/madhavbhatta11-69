@@ -47,11 +47,20 @@ const Contact = () => {
         });
         setFormData({ name: '', email: '', message: '' });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('EmailJS error:', error);
+      
+      let errorMessage = "Please try again later or contact me directly.";
+      
+      if (error.status === 412) {
+        errorMessage = "Email service temporarily unavailable. Please contact me directly at madhavbhatta11@gmail.com";
+      } else if (error.status === 400) {
+        errorMessage = "Please check your input and try again.";
+      }
+      
       toast({
         title: "Error sending message",
-        description: "Please try again later or contact me directly.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
