@@ -96,26 +96,32 @@ const Portfolio = () => {
     ]
   };
 
-  const ProjectCard = ({ project }: { project: any }) => (
+  const ProjectCard = ({ title, description, image, github, demo }: { 
+    title: string; 
+    description: string; 
+    image: string; 
+    github: string; 
+    demo: string; 
+  }) => (
     <div className="project-card group">
       <div className="relative overflow-hidden">
         <img 
-          src={project.image} 
-          alt={project.title}
+          src={image} 
+          alt={title}
           className="project-card-image w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
       <div className="project-card-content">
-        <h3 className="heading-project mb-2">{project.title}</h3>
+        <h3 className="heading-project mb-2">{title}</h3>
         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-          {project.description}
+          {description}
         </p>
         <div className="flex gap-3">
-          <a href={project.github} className="btn-outline flex items-center gap-2">
+          <a href={github} className="btn-outline flex items-center gap-2">
             <Github className="w-4 h-4" />
             Code
           </a>
-          <a href={project.demo} className="btn-tech flex items-center gap-2">
+          <a href={demo} className="btn-tech flex items-center gap-2">
             <ExternalLink className="w-4 h-4" />
             Demo
           </a>
@@ -124,20 +130,13 @@ const Portfolio = () => {
     </div>
   );
 
-  const ProjectSection = ({ title, projects }: { title: string; projects: any[] }) => (
-    <div className="mb-16">
-      <h3 className="text-2xl font-bold text-primary mb-8 tracking-wide">
-        {title}
-      </h3>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-            <ProjectCard project={project} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  // Flatten all projects into one array for grid display
+  const allProjects = [
+    ...projects.webDevelopment,
+    ...projects.dataScience,
+    ...projects.academic,
+    ...projects.openSource
+  ];
 
   return (
     <section id="portfolio" className="section-spacing bg-gradient-subtle">
@@ -152,23 +151,12 @@ const Portfolio = () => {
           </p>
         </div>
 
-        <div className="space-y-16">
-          <ProjectSection 
-            title="WEB DEVELOPMENT" 
-            projects={projects.webDevelopment} 
-          />
-          <ProjectSection 
-            title="DATA SCIENCE & AI" 
-            projects={projects.dataScience} 
-          />
-          <ProjectSection 
-            title="ACADEMIC PROJECTS" 
-            projects={projects.academic} 
-          />
-          <ProjectSection 
-            title="OPEN SOURCE / COLLABORATIONS" 
-            projects={projects.openSource} 
-          />
+        <div className="projects-grid">
+          {allProjects.map((project, index) => (
+            <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <ProjectCard {...project} />
+            </div>
+          ))}
         </div>
       </div>
     </section>
