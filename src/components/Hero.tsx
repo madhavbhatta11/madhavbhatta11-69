@@ -1,4 +1,4 @@
-import profileHero from '@/assets/profile-hero.jpg';
+import profileHero from '@/assets/new-hero-background.jpg';
 
 const Hero = () => {
   return <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">

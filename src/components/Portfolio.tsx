@@ -1,6 +1,6 @@
 import { ExternalLink, Github } from 'lucide-react';
 import ecommerceImg from '@/assets/project-ecommerce.jpg';
-import taskManagerImg from '@/assets/project-taskmanager.jpg';
+import taskManagerImg from '@/assets/new-project-image.jpg';
 import stockPredictorImg from '@/assets/project-stockpredictor.jpg';
 import sentimentImg from '@/assets/project-sentiment.jpg';
 import cpuImg from '@/assets/project-cpu.jpg';
@@ -14,21 +14,21 @@ const Portfolio = () => {
         title: "E-Commerce Platform",
         description: "Full-stack e-commerce solution with React, Node.js, and MongoDB",
         image: ecommerceImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       },
       {
         title: "Task Management App",
         description: "Real-time collaborative task manager with WebSocket integration",
         image: taskManagerImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       },
       {
         title: "Portfolio Website",
         description: "Responsive portfolio site with modern design and animations",
         image: stockPredictorImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       }
     ],
@@ -37,21 +37,21 @@ const Portfolio = () => {
         title: "Stock Price Predictor",
         description: "Machine learning model for stock market prediction using LSTM",
         image: stockPredictorImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       },
       {
         title: "Sentiment Analysis Tool",
         description: "NLP-based sentiment analyzer for social media data",
         image: sentimentImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       },
       {
         title: "Image Classification",
         description: "CNN model for computer vision tasks with 95% accuracy",
         image: taskManagerImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       }
     ],
@@ -60,21 +60,21 @@ const Portfolio = () => {
         title: "CPU Design Project",
         description: "32-bit RISC processor design in Verilog with full pipeline",
         image: cpuImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       },
       {
         title: "Operating System",
         description: "Custom OS kernel with memory management and scheduling",
         image: osImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       },
       {
         title: "Network Protocol",
         description: "Implementation of TCP/IP stack from scratch in C",
         image: ecommerceImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       }
     ],
@@ -83,14 +83,14 @@ const Portfolio = () => {
         title: "React UI Library",
         description: "Contribution to popular React component library",
         image: reactUiImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       },
       {
         title: "Algorithm Visualizer",
         description: "Interactive tool for visualizing sorting and graph algorithms",
         image: taskManagerImg,
-        github: "#",
+        github: "https://github.com/madhavbhatta11",
         demo: "#"
       }
     ]
