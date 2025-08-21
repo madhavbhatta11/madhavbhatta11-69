@@ -25,7 +25,8 @@ const About = () => {
             <h2 className="heading-section mb-8">
               ABOUT ME
             </h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+            {/* Added text-justify here so all paragraphs are justified */}
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-justify">
               <p>
                 I'm a passionate computer engineering student with a deep fascination for the intersection of 
                 hardware and software. My journey in technology spans from low-level system programming to 
