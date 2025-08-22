@@ -6,56 +6,58 @@ const CallToAction = () => {
     }
   };
 
+  const stats = [
+    { value: '20+', label: 'Projects Completed' },
+    { value: '5+', label: 'Technologies Mastered' },
+    { value: '100%', label: 'Commitment Level' },
+    { value: '∞', label: 'Learning Potential' },
+  ];
+
   return (
-    <section className="section-spacing bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white relative overflow-hidden">
+    <section className="section-spacing bg-gradient-to-br from-blue-700 to-indigo-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-y-6" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent transform -skew-y-6" />
       </div>
 
       <div className="container-section relative z-10">
-        <div className="text-center max-w-4xl mx-auto animate-fade-in">
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-white/10 rounded-xl p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105"
+            >
+              <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
+              <div className="text-sm uppercase tracking-wide text-gray-200 text-center">{stat.label}</div>
+            </div>
+          ))}
+        </div>
 
-          {/* Stats Above Heading */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-            {[
-              { value: '20+', label: 'Projects Completed' },
-              { value: '5+', label: 'Technologies Mastered' },
-              { value: '100%', label: 'Commitment Level' },
-              { value: '∞', label: 'Learning Potential' },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-white/10 rounded-lg p-6 transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md flex flex-col justify-center items-center text-center"
-              >
-                <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
-                <div className="text-white/80 text-sm uppercase tracking-wide">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Main Heading */}
+        <div className="text-justify max-w-4xl mx-auto animate-fade-in">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             Let's Build Something
             <span className="block text-accent">Together</span>
           </h2>
-          
-          <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed font-light">
+
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed font-light text-justify">
             Open to internships, collaborations, and innovative projects
           </p>
-          
-          <p className="text-lg text-white/80 mb-12 max-w-2xl mx-auto">
+
+          <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed text-justify">
             Whether you're looking for a passionate developer, a creative problem-solver, 
             or someone eager to push the boundaries of technology, I'm ready to contribute 
             to your next big idea.
           </p>
 
-          <button 
-            onClick={scrollToContact}
-            className="btn-tech text-lg px-8 py-4 hover-glow bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Contact Me
-          </button>
+          <div className="text-center">
+            <button 
+              onClick={scrollToContact}
+              className="btn-tech text-lg px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg"
+            >
+              Contact Me
+            </button>
+          </div>
         </div>
       </div>
     </section>
