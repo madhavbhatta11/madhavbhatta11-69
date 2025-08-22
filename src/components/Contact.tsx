@@ -49,15 +49,14 @@ const Contact = () => {
       }
     } catch (error: any) {
       console.error('EmailJS error:', error);
-      
       let errorMessage = "Please try again later or contact me directly.";
-      
+
       if (error.status === 412) {
         errorMessage = "Email service temporarily unavailable. Please contact me directly at madhavbhatta11@gmail.com";
       } else if (error.status === 400) {
         errorMessage = "Please check your input and try again.";
       }
-      
+
       toast({
         title: "Error sending message",
         description: errorMessage,
@@ -96,7 +95,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-spacing bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <section id="contact" className="section-spacing bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
       <div className="container-section">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="heading-section mb-6">
@@ -109,7 +108,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="animate-slide-up bg-white/70 backdrop-blur-md">
+          <Card className="animate-slide-up">
             <CardHeader>
               <h3 className="text-2xl font-bold text-primary">Send Message</h3>
               <p className="text-muted-foreground">I'll get back to you within hours OR text me directly on social medias 😉 </p>
@@ -168,15 +167,15 @@ const Contact = () => {
                   size="lg"
                 >
                   {isSubmitting ? (
-                    <div className="flex items-center justify-center">
+                    <>
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
                       Sending...
-                    </div>
+                    </>
                   ) : (
-                    <div className="flex items-center justify-center">
+                    <>
                       <Send className="w-4 h-4 mr-2" />
                       Send Message
-                    </div>
+                    </>
                   )}
                 </Button>
               </form>
