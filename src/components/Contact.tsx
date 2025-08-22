@@ -29,15 +29,15 @@ const Contact = () => {
 
     try {
       const result = await emailjs.send(
-        'service_mjpbdjb', // Service ID
-        'template_6s0wvur', // Template ID
+        'service_mjpbdjb',
+        'template_6s0wvur',
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           to_name: 'Madhav Bhatta',
         },
-        'gLwXdXEKzRBT3cp7z' // Public Key
+        'gLwXdXEKzRBT3cp7z'
       );
 
       if (result.status === 200) {
@@ -50,13 +50,11 @@ const Contact = () => {
     } catch (error: any) {
       console.error('EmailJS error:', error);
       let errorMessage = "Please try again later or contact me directly.";
-
       if (error.status === 412) {
         errorMessage = "Email service temporarily unavailable. Please contact me directly at madhavbhatta11@gmail.com";
       } else if (error.status === 400) {
         errorMessage = "Please check your input and try again.";
       }
-
       toast({
         title: "Error sending message",
         description: errorMessage,
@@ -68,39 +66,17 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    {
-      icon: Github,
-      label: 'GitHub',
-      href: 'https://github.com/madhavbhatta11',
-      color: 'hover:text-gray-600'
-    },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      href: 'https://linkedin.com/in/madhavbhatta11',
-      color: 'hover:text-blue-600'
-    },
-    {
-      icon: Instagram,
-      label: 'Instagram',
-      href: 'https://instagram.com/madhav__bhatta',
-      color: 'hover:text-pink-600'
-    },
-    {
-      icon: Mail,
-      label: 'Email',
-      href: 'mailto:your.madhavbhatta11@gmail.com',
-      color: 'hover:text-accent'
-    }
+    { icon: Github, label: 'GitHub', href: 'https://github.com/madhavbhatta11', color: 'hover:text-gray-600' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/madhavbhatta11', color: 'hover:text-blue-600' },
+    { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/madhav__bhatta', color: 'hover:text-pink-600' },
+    { icon: Mail, label: 'Email', href: 'mailto:your.madhavbhatta11@gmail.com', color: 'hover:text-accent' }
   ];
 
   return (
-    <section id="contact" className="section-spacing bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
-      <div className="container-section">
+    <section id="contact" className="section-spacing bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 min-h-screen">
+      <div className="container-section py-16">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="heading-section mb-6">
-            CONTACT
-          </h2>
+          <h2 className="heading-section mb-6">CONTACT</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Let's connect and create the future together.
           </p>
@@ -108,17 +84,17 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="animate-slide-up">
+          <Card className="animate-slide-up bg-transparent border border-gray-300/20 shadow-none">
             <CardHeader>
               <h3 className="text-2xl font-bold text-primary">Send Message</h3>
-              <p className="text-muted-foreground">I'll get back to you within hours OR text me directly on social medias 😉 </p>
+              <p className="text-muted-foreground">
+                I'll get back to you within hours OR text me directly on social medias 😉
+              </p>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">
-                    Name
-                  </label>
+                  <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">Name</label>
                   <Input
                     type="text"
                     id="name"
@@ -131,9 +107,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
-                    Email
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">Email</label>
                   <Input
                     type="email"
                     id="email"
@@ -146,9 +120,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-primary mb-2">
-                    Message
-                  </label>
+                  <label htmlFor="message" className="block text-sm font-medium text-primary mb-2">Message</label>
                   <Textarea
                     id="message"
                     name="message"
@@ -185,27 +157,18 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="animate-fade-in space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-primary mb-4">
-                Get In Touch
-              </h3>
+              <h3 className="text-2xl font-bold text-primary mb-4">Get In Touch</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                I'm always excited to discuss new opportunities, innovative projects, 
-                or simply connect with fellow technology enthusiasts. Whether you're 
-                looking for a dedicated intern, a collaborator on an open-source project, 
-                or want to share insights about the latest tech trends, I'd love to hear from you.
+                I'm always excited to discuss new opportunities, innovative projects, or simply connect with fellow technology enthusiasts.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Feel free to reach out through the form or connect with me on social media. 
-                I typically respond within 24 hours and am always eager to explore how 
-                we can create something amazing together.
+                Feel free to reach out through the form or connect with me on social media.
               </p>
             </div>
 
             {/* Social Links */}
             <div>
-              <h4 className="text-lg font-semibold text-primary mb-4">
-                Connect With Me
-              </h4>
+              <h4 className="text-lg font-semibold text-primary mb-4">Connect With Me</h4>
               <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social) => {
                   const IconComponent = social.icon;
@@ -226,10 +189,8 @@ const Contact = () => {
             </div>
 
             {/* Quick Info */}
-            <div className="bg-muted/50 rounded-lg p-6">
-              <h4 className="text-lg font-semibold text-primary mb-3">
-                Quick Info
-              </h4>
+            <div className="bg-white/20 backdrop-blur-md rounded-lg p-6">
+              <h4 className="text-lg font-semibold text-primary mb-3">Quick Info</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
                 <p>📍 Available for remote and on-site opportunities</p>
                 <p>🎓 Computer Engineering Student</p>
