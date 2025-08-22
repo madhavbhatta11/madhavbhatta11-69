@@ -1,8 +1,9 @@
-import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github, BrandWhatsapp } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // Social links
   const socialLinks = [
     { icon: Instagram, href: 'https://instagram.com/madhav__bhatta', label: 'Instagram' },
     { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
@@ -10,6 +11,7 @@ const Footer = () => {
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
+    { icon: BrandWhatsapp, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }, // Your Nepal number
   ];
 
   const quickLinks = [
@@ -22,9 +24,7 @@ const Footer = () => {
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -33,9 +33,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright */}
           <div className="mb-6 md:mb-0">
-            <p className="text-sm">
-              © {currentYear} Madhav Bhatta. All rights reserved.
-            </p>
+            <p className="text-sm">© {currentYear} Madhav Bhatta. All rights reserved.</p>
           </div>
 
           {/* Social Media Icons */}
@@ -43,16 +41,14 @@ const Footer = () => {
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
-                <a
+                <div
                   key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full flex items-center justify-center transition-colors duration-200"
+                  onClick={() => window.open(social.href, '_blank', 'noopener,noreferrer')}
+                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-200"
                   aria-label={social.label}
                 >
                   <Icon className="w-5 h-5" />
-                </a>
+                </div>
               );
             })}
           </div>
@@ -73,9 +69,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-primary-foreground/10 mt-8 pt-8 text-center">
-          <p className="text-xs text-primary-foreground/60">
-          ©madhavbhatta11
-          </p>
+          <p className="text-xs text-primary-foreground/60">©madhavbhatta11</p>
         </div>
       </div>
     </footer>
