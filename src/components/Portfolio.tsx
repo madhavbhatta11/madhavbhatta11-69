@@ -151,7 +151,7 @@ const Portfolio = () => {
           </p>
         </div>
 
-        <div className="projects-grid">
+        <div className="flex flex-col gap-6 max-w-4xl mx-auto">
           {allProjects.map((project, index) => (
             <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <ProjectCard {...project} />
