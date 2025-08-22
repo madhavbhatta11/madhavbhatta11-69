@@ -1,9 +1,9 @@
-import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github, BrandWhatsapp } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Social links including WhatsApp
+  // Social links — safe URLs without www
   const socialLinks = [
     { icon: Instagram, href: 'https://instagram.com/madhav__bhatta', label: 'Instagram' },
     { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
@@ -11,7 +11,6 @@ const Footer = () => {
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
-    { icon: BrandWhatsapp, href: 'https://wa.me/9779868869289', label: 'WhatsApp' },
   ];
 
   const quickLinks = [
@@ -24,7 +23,9 @@ const Footer = () => {
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -40,7 +41,6 @@ const Footer = () => {
           <div className="flex gap-4 mb-6 md:mb-0">
             {socialLinks.map((social) => {
               const Icon = social.icon;
-              if (!Icon) return null; // safety check
               return (
                 <a
                   key={social.label}
