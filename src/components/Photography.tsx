@@ -7,14 +7,14 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useRef, useState } from "react";
 
-// Import 7 photos from assets folder
-import photo1 from "@/assets/photo1.jpg";
-import photo2 from "@/assets/photo2.jpg";
-import photo3 from "@/assets/photo3.jpg";
-import photo4 from "@/assets/photo4.jpg";
-import photo5 from "@/assets/photo5.jpg";
-import photo6 from "@/assets/photo6.jpg";
-import photo7 from "@/assets/photo7.jpg";
+// Import 7 photos (with .jpeg extension)
+import photo1 from "@/assets/photo1.jpeg";
+import photo2 from "@/assets/photo2.jpeg";
+import photo3 from "@/assets/photo3.jpeg";
+import photo4 from "@/assets/photo4.jpeg";
+import photo5 from "@/assets/photo5.jpeg";
+import photo6 from "@/assets/photo6.jpeg";
+import photo7 from "@/assets/photo7.jpeg";
 
 const Photography = () => {
   const photos = [
@@ -87,7 +87,8 @@ const Photography = () => {
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="heading-section mb-6">PHOTOGRAPHY</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A collection of moments captured through my lens, showcasing different perspectives and stories.
+            A collection of moments captured through my lens, showcasing
+            different perspectives and stories.
           </p>
         </div>
 
