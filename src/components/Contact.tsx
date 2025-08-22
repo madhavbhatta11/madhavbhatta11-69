@@ -112,7 +112,7 @@ const Contact = () => {
           <Card className="animate-slide-up">
             <CardHeader>
               <h3 className="text-2xl font-bold text-primary">Send Message</h3>
-              <p className="text-muted-foreground">I'll get back to you within  hours</p>
+              <p className="text-muted-foreground">I'll get back to you within hours OR text me directly on social medias 😉 </p>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
