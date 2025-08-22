@@ -26,7 +26,7 @@ const CallToAction = () => {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="bg-white/10 rounded-lg p-6 transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md"
+                className="bg-white/10 rounded-lg p-6 transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md flex flex-col justify-center items-center text-center"
               >
                 <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
                 <div className="text-white/80 text-sm uppercase tracking-wide">{stat.label}</div>
