@@ -11,6 +11,8 @@ const Footer = () => {
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
+    { icon: () => <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M..."/></svg>, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }
+
   ];
 
   const quickLinks = [
