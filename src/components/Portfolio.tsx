@@ -205,6 +205,12 @@ const Portfolio = () => {
             </CarouselContent>
             <div 
               className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
+              onClick={() => {
+                stopAutoScroll();
+                if (carouselRef.current?.api) {
+                  carouselRef.current.api.scrollPrev();
+                }
+              }}
               onMouseEnter={() => {
                 stopAutoScroll();
                 if (carouselRef.current?.api) {
@@ -217,6 +223,12 @@ const Portfolio = () => {
             </div>
             <div 
               className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
+              onClick={() => {
+                stopAutoScroll();
+                if (carouselRef.current?.api) {
+                  carouselRef.current.api.scrollNext();
+                }
+              }}
               onMouseEnter={() => {
                 stopAutoScroll();
                 if (carouselRef.current?.api) {
