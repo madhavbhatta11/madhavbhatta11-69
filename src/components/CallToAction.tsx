@@ -33,10 +33,10 @@ const CallToAction = () => {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-white/10 rounded-xl p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105"
+                className="bg-white/10 rounded-xl w-36 h-36 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105"
               >
-                <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
-                <div className="text-sm uppercase tracking-wide text-gray-300 text-center">
+                <div className="text-2xl font-bold text-accent mb-1">{stat.value}</div>
+                <div className="text-xs uppercase tracking-wide text-gray-300 text-center">
                   {stat.label}
                 </div>
               </div>
