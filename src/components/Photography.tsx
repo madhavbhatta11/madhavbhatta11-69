@@ -1,46 +1,20 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useRef } from 'react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const Photography = () => {
-  const carouselRef = useRef<any>(null);
-  
-  // Placeholder photos - you can replace these with your actual photos
+  // Placeholder photos - replace with your own
   const photos = [
-    {
-      id: 1,
-      src: "/lovable-uploads/placeholder-photo-1.jpg",
-      alt: "Photography 1",
-      title: "Landscape"
-    },
-    {
-      id: 2,
-      src: "/lovable-uploads/placeholder-photo-2.jpg", 
-      alt: "Photography 2",
-      title: "Portrait"
-    },
-    {
-      id: 3,
-      src: "/lovable-uploads/placeholder-photo-3.jpg",
-      alt: "Photography 3", 
-      title: "Street"
-    },
-    {
-      id: 4,
-      src: "/lovable-uploads/placeholder-photo-4.jpg",
-      alt: "Photography 4",
-      title: "Nature"
-    },
-    {
-      id: 5,
-      src: "/lovable-uploads/placeholder-photo-5.jpg",
-      alt: "Photography 5",
-      title: "Architecture"
-    }
+    { id: 1, src: "/lovable-uploads/placeholder-photo-1.jpg", alt: "Photography 1", title: "Landscape" },
+    { id: 2, src: "/lovable-uploads/placeholder-photo-2.jpg", alt: "Photography 2", title: "Portrait" },
+    { id: 3, src: "/lovable-uploads/placeholder-photo-3.jpg", alt: "Photography 3", title: "Street" },
+    { id: 4, src: "/lovable-uploads/placeholder-photo-4.jpg", alt: "Photography 4", title: "Nature" },
+    { id: 5, src: "/lovable-uploads/placeholder-photo-5.jpg", alt: "Photography 5", title: "Architecture" },
   ];
 
   return (
@@ -56,19 +30,18 @@ const Photography = () => {
         </div>
 
         <div className="relative max-w-6xl mx-auto">
-          <Carousel ref={carouselRef} className="w-full">
+          <Carousel className="w-full" opts={{ loop: true }}>
             <CarouselContent>
               {photos.map((photo) => (
                 <CarouselItem key={photo.id}>
                   <div className="flex justify-center">
-                     <div className="relative group">
-                       <div className="aspect-[4/3] w-full max-w-sm overflow-hidden rounded-lg shadow-lg">
-                         <img
-                           src={photo.src}
-                           alt={photo.alt}
-                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    <div className="relative group">
+                      <div className="aspect-[4/3] w-full max-w-sm overflow-hidden rounded-lg shadow-lg">
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                           onError={(e) => {
-                            // Fallback to a gradient background if image fails to load
                             const target = e.target as HTMLImageElement;
                             target.style.display = 'none';
                             target.parentElement!.style.background = 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)))';
@@ -92,36 +65,14 @@ const Photography = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div 
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
-              onClick={() => {
-                if (carouselRef.current?.api) {
-                  carouselRef.current.api.scrollPrev();
-                }
-              }}
-              onMouseEnter={() => {
-                if (carouselRef.current?.api) {
-                  carouselRef.current.api.scrollPrev();
-                }
-              }}
-            >
+
+            {/* Navigation buttons */}
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center z-10">
               <ChevronLeft className="h-6 w-6" />
-            </div>
-            <div 
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
-              onClick={() => {
-                if (carouselRef.current?.api) {
-                  carouselRef.current.api.scrollNext();
-                }
-              }}
-              onMouseEnter={() => {
-                if (carouselRef.current?.api) {
-                  carouselRef.current.api.scrollNext();
-                }
-              }}
-            >
+            </CarouselPrevious>
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center z-10">
               <ChevronRight className="h-6 w-6" />
-            </div>
+            </CarouselNext>
           </Carousel>
         </div>
 
