@@ -96,7 +96,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-spacing bg-gradient-subtle">
+    <section id="contact" className="section-spacing bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <div className="container-section">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="heading-section mb-6">
@@ -109,7 +109,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="animate-slide-up">
+          <Card className="animate-slide-up bg-white/70 backdrop-blur-md">
             <CardHeader>
               <h3 className="text-2xl font-bold text-primary">Send Message</h3>
               <p className="text-muted-foreground">I'll get back to you within hours OR text me directly on social medias 😉 </p>
@@ -164,19 +164,19 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                   size="lg"
                 >
                   {isSubmitting ? (
-                    <>
+                    <div className="flex items-center justify-center">
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
                       Sending...
-                    </>
+                    </div>
                   ) : (
-                    <>
+                    <div className="flex items-center justify-center">
                       <Send className="w-4 h-4 mr-2" />
                       Send Message
-                    </>
+                    </div>
                   )}
                 </Button>
               </form>
