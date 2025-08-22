@@ -1,5 +1,16 @@
+import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github } from 'lucide-react';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: Instagram, href: 'https://instagram.com/madhavbhatta11', label: 'Instagram' },
+    { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
+    { icon: Youtube, href: 'https://youtube.com/@madhavbhatta11', label: 'YouTube' },
+    { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
+    { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
+  ];
 
   const quickLinks = [
     { label: 'Home', href: '#home' },
@@ -23,12 +34,31 @@ const Footer = () => {
           {/* Copyright */}
           <div className="mb-6 md:mb-0">
             <p className="text-sm">
-              © {currentYear} Your Name. All rights reserved.
+              © {currentYear} Madhav Bhatta. All rights reserved.
             </p>
           </div>
 
+          {/* Social Media Icons */}
+          <div className="flex gap-4 mb-6 md:mb-0">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full flex items-center justify-center transition-colors duration-200"
+                  aria-label={social.label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              );
+            })}
+          </div>
+
           {/* Quick Links */}
-          <div className="flex flex-wrap gap-6 mb-6 md:mb-0">
+          <div className="flex flex-wrap gap-6">
             {quickLinks.map((link) => (
               <button
                 key={link.label}

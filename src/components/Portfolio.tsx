@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -203,8 +203,8 @@ const Portfolio = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious 
-              className="left-4 bg-white/90 hover:bg-white border-0 shadow-lg" 
+            <div 
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
               onMouseEnter={() => {
                 stopAutoScroll();
                 if (carouselRef.current?.api) {
@@ -212,9 +212,11 @@ const Portfolio = () => {
                 }
               }}
               onMouseLeave={startAutoScroll}
-            />
-            <CarouselNext 
-              className="right-4 bg-white/90 hover:bg-white border-0 shadow-lg"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </div>
+            <div 
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
               onMouseEnter={() => {
                 stopAutoScroll();
                 if (carouselRef.current?.api) {
@@ -222,7 +224,9 @@ const Portfolio = () => {
                 }
               }}
               onMouseLeave={startAutoScroll}
-            />
+            >
+              <ChevronRight className="h-6 w-6" />
+            </div>
           </Carousel>
         </div>
       </div>

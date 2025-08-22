@@ -1,13 +1,14 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const Photography = () => {
+  const carouselRef = useRef<any>(null);
+  
   // Placeholder photos - you can replace these with your actual photos
   const photos = [
     {
@@ -55,7 +56,7 @@ const Photography = () => {
         </div>
 
         <div className="relative max-w-6xl mx-auto">
-          <Carousel className="w-full">
+          <Carousel ref={carouselRef} className="w-full">
             <CarouselContent>
               {photos.map((photo) => (
                 <CarouselItem key={photo.id}>
@@ -91,12 +92,26 @@ const Photography = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-4 bg-white/90 hover:bg-white border-0 shadow-lg">
+            <div 
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
+              onMouseEnter={() => {
+                if (carouselRef.current?.api) {
+                  carouselRef.current.api.scrollPrev();
+                }
+              }}
+            >
               <ChevronLeft className="h-6 w-6" />
-            </CarouselPrevious>
-            <CarouselNext className="right-4 bg-white/90 hover:bg-white border-0 shadow-lg">
+            </div>
+            <div 
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
+              onMouseEnter={() => {
+                if (carouselRef.current?.api) {
+                  carouselRef.current.api.scrollNext();
+                }
+              }}
+            >
               <ChevronRight className="h-6 w-6" />
-            </CarouselNext>
+            </div>
           </Carousel>
         </div>
 
