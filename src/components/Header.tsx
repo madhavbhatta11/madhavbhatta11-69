@@ -33,13 +33,15 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass shadow-lg' : 'bg-transparent'
+        isScrolled
+          ? 'bg-gradient-to-r from-blue-600/70 via-indigo-600/60 to-purple-600/70 backdrop-blur-md shadow-lg'
+          : 'bg-transparent'
       }`}
     >
       <nav className="container-section">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="text-xl font-bold text-primary">
+          <div className="text-xl font-bold text-white md:text-white">
             MADHAV BHATTA
           </div>
 
@@ -49,7 +51,7 @@ const Header = () => {
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="nav-link"
+                className="nav-link text-white hover:text-gray-200 transition-colors duration-200"
               >
                 {item.label}
               </button>
@@ -58,26 +60,22 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-primary"
+            className="md:hidden p-2 text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+          <div className="md:hidden py-4 border-t border-white/20 animate-fade-in">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left nav-link py-2"
+                  className="text-left nav-link py-2 text-white hover:text-gray-200 transition-colors duration-200"
                 >
                   {item.label}
                 </button>
