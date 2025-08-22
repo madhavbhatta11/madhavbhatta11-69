@@ -4,9 +4,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Instagram, href: 'https://instagram.com/madhavbhatta11', label: 'Instagram' },
+    { icon: Instagram, href: 'https://instagram.com/madhav__bhatta', label: 'Instagram' },
     { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
-    { icon: Youtube, href: 'https://youtube.com/@madhavbhatta11', label: 'YouTube' },
+    { icon: Youtube, href: 'https://youtube.com/@madhavbhatta4695', label: 'YouTube' },
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
