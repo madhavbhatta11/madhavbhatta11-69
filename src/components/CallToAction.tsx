@@ -14,7 +14,7 @@ const CallToAction = () => {
   ];
 
   return (
-    <section className="section-spacing bg-gradient-to-br from-blue-700 to-indigo-900 text-white relative overflow-hidden">
+    <section className="section-spacing bg-gray-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent transform -skew-y-6" />
@@ -29,7 +29,7 @@ const CallToAction = () => {
               className="bg-white/10 rounded-xl p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105"
             >
               <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
-              <div className="text-sm uppercase tracking-wide text-gray-200 text-center">{stat.label}</div>
+              <div className="text-sm uppercase tracking-wide text-gray-300 text-center">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -40,11 +40,11 @@ const CallToAction = () => {
             <span className="block text-accent">Together</span>
           </h2>
 
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed font-light text-justify">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light text-justify">
             Open to internships, collaborations, and innovative projects
           </p>
 
-          <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed text-justify">
+          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed text-justify">
             Whether you're looking for a passionate developer, a creative problem-solver, 
             or someone eager to push the boundaries of technology, I'm ready to contribute 
             to your next big idea.
