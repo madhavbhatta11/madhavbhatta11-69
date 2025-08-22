@@ -72,25 +72,25 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com/yourusername',
+      href: 'https://github.com/madhavbhatta11',
       color: 'hover:text-gray-600'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/yourprofile',
+      href: 'https://linkedin.com/in/madhavbhatta11',
       color: 'hover:text-blue-600'
     },
     {
       icon: Instagram,
       label: 'Instagram',
-      href: 'https://instagram.com/yourusername',
+      href: 'https://instagram.com/madhav__bhatta',
       color: 'hover:text-pink-600'
     },
     {
       icon: Mail,
       label: 'Email',
-      href: 'mailto:your.email@example.com',
+      href: 'mailto:your.madhavbhatta11@gmail.com',
       color: 'hover:text-accent'
     }
   ];
@@ -112,7 +112,7 @@ const Contact = () => {
           <Card className="animate-slide-up">
             <CardHeader>
               <h3 className="text-2xl font-bold text-primary">Send Message</h3>
-              <p className="text-muted-foreground">I'll get back to you within 24 hours</p>
+              <p className="text-muted-foreground">I'll get back to you within  hours</p>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
