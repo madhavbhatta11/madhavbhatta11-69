@@ -7,14 +7,24 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useRef, useState } from "react";
 
+// Import 7 photos from assets folder
+import photo1 from "@/assets/photo1.jpg";
+import photo2 from "@/assets/photo2.jpg";
+import photo3 from "@/assets/photo3.jpg";
+import photo4 from "@/assets/photo4.jpg";
+import photo5 from "@/assets/photo5.jpg";
+import photo6 from "@/assets/photo6.jpg";
+import photo7 from "@/assets/photo7.jpg";
+
 const Photography = () => {
-  // Replace with your actual photos
   const photos = [
-    { id: 1, src: "/lovable-uploads/placeholder-photo-1.jpg", alt: "Photography 1", title: "Landscape" },
-    { id: 2, src: "/lovable-uploads/placeholder-photo-2.jpg", alt: "Photography 2", title: "Portrait" },
-    { id: 3, src: "/lovable-uploads/placeholder-photo-3.jpg", alt: "Photography 3", title: "Street" },
-    { id: 4, src: "/lovable-uploads/placeholder-photo-4.jpg", alt: "Photography 4", title: "Nature" },
-    { id: 5, src: "/lovable-uploads/placeholder-photo-5.jpg", alt: "Photography 5", title: "Architecture" },
+    { id: 1, src: photo1, alt: "Photography 1", title: "Photo 1" },
+    { id: 2, src: photo2, alt: "Photography 2", title: "Photo 2" },
+    { id: 3, src: photo3, alt: "Photography 3", title: "Photo 3" },
+    { id: 4, src: photo4, alt: "Photography 4", title: "Photo 4" },
+    { id: 5, src: photo5, alt: "Photography 5", title: "Photo 5" },
+    { id: 6, src: photo6, alt: "Photography 6", title: "Photo 6" },
+    { id: 7, src: photo7, alt: "Photography 7", title: "Photo 7" },
   ];
 
   const [api, setApi] = useState<CarouselApi | null>(null);
@@ -23,13 +33,11 @@ const Photography = () => {
 
   const updateCenter = () => {
     if (!api) return;
-    // Slides currently in view (accounting for loop & partially visible)
     const inView = api.slidesInView(true);
     if (inView.length > 0) {
       const middle = inView[Math.floor(inView.length / 2)];
       setCenterIndex(middle);
     } else {
-      // Fallback to selected snap
       setCenterIndex(api.selectedScrollSnap());
     }
   };
@@ -52,10 +60,8 @@ const Photography = () => {
   useEffect(() => {
     if (!api) return;
 
-    // Initial center calc
     updateCenter();
 
-    // Update center on relevant events
     const onSelect = () => updateCenter();
     const onScroll = () => updateCenter();
     const onReInit = () => updateCenter();
@@ -64,7 +70,6 @@ const Photography = () => {
     api.on("scroll", onScroll);
     api.on("reInit", onReInit);
 
-    // Start autoplay
     startAuto();
 
     return () => {
@@ -95,11 +100,10 @@ const Photography = () => {
             className="w-full"
             setApi={setApi}
             opts={{
-              align: "center", // center alignment for a clear focused slide
+              align: "center",
               loop: true,
             }}
           >
-            {/* -ml padding helps align the gutter nicely; adjust if needed */}
             <CarouselContent className="-ml-2 md:-ml-3 lg:-ml-4">
               {photos.map((photo, idx) => {
                 const isCenter = idx === centerIndex;
@@ -112,13 +116,13 @@ const Photography = () => {
                     "
                   >
                     <div
-                      className={`relative group transition-transform duration-300`}
+                      className="relative group transition-transform duration-300"
                       style={{
                         transform: `scale(${isCenter ? 1.05 : 0.95})`,
                         zIndex: isCenter ? 2 : 1,
                       }}
                     >
-                      <div className="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg">
+                      <div className="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg bg-gradient-to-br from-primary to-secondary">
                         <img
                           src={photo.src}
                           alt={photo.alt}
@@ -126,19 +130,6 @@ const Photography = () => {
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.style.display = "none";
-                            target.parentElement!.setAttribute(
-                              "style",
-                              "background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));"
-                            );
-                            target.parentElement!.innerHTML = `
-                              <div class="w-full h-full flex items-center justify-center text-white">
-                                <div class="text-center">
-                                  <div class="text-2xl mb-2">📸</div>
-                                  <div class="text-lg">${photo.title}</div>
-                                  <div class="text-sm opacity-80">Photo placeholder</div>
-                                </div>
-                              </div>
-                            `;
                           }}
                         />
                       </div>
@@ -151,7 +142,7 @@ const Photography = () => {
               })}
             </CarouselContent>
 
-            {/* Custom nav buttons that use the Embla API */}
+            {/* Navigation buttons */}
             <button
               type="button"
               aria-label="Previous"
