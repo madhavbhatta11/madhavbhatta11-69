@@ -60,12 +60,12 @@ const Photography = () => {
               {photos.map((photo) => (
                 <CarouselItem key={photo.id}>
                   <div className="flex justify-center">
-                    <div className="relative group">
-                      <div className="aspect-[4/3] w-full max-w-5xl overflow-hidden rounded-lg shadow-lg">
-                        <img
-                          src={photo.src}
-                          alt={photo.alt}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                     <div className="relative group">
+                       <div className="aspect-[4/3] w-full max-w-sm overflow-hidden rounded-lg shadow-lg">
+                         <img
+                           src={photo.src}
+                           alt={photo.alt}
+                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                           onError={(e) => {
                             // Fallback to a gradient background if image fails to load
                             const target = e.target as HTMLImageElement;

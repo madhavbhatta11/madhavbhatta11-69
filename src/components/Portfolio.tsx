@@ -105,15 +105,29 @@ const Portfolio = () => {
   };
 
   const carouselRef = useRef<any>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  const startAutoScroll = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
       if (carouselRef.current?.api) {
         carouselRef.current.api.scrollNext();
       }
-    }, 4000); // Auto-scroll every 4 seconds
+    }, 4000);
+  };
 
-    return () => clearInterval(interval);
+  const stopAutoScroll = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    startAutoScroll();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   const ProjectCard = ({ title, description, image, github, demo }: { 
@@ -189,8 +203,26 @@ const Portfolio = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-4 bg-white/90 hover:bg-white border-0 shadow-lg" />
-            <CarouselNext className="right-4 bg-white/90 hover:bg-white border-0 shadow-lg" />
+            <CarouselPrevious 
+              className="left-4 bg-white/90 hover:bg-white border-0 shadow-lg" 
+              onMouseEnter={() => {
+                stopAutoScroll();
+                if (carouselRef.current?.api) {
+                  carouselRef.current.api.scrollPrev();
+                }
+              }}
+              onMouseLeave={startAutoScroll}
+            />
+            <CarouselNext 
+              className="right-4 bg-white/90 hover:bg-white border-0 shadow-lg"
+              onMouseEnter={() => {
+                stopAutoScroll();
+                if (carouselRef.current?.api) {
+                  carouselRef.current.api.scrollNext();
+                }
+              }}
+              onMouseLeave={startAutoScroll}
+            />
           </Carousel>
         </div>
       </div>
