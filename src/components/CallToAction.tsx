@@ -17,23 +17,21 @@ const CallToAction = () => {
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
 
           {/* Stats Above Heading */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">20+</div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">Projects Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">5+</div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">Technologies Mastered</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">100%</div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">Commitment Level</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">∞</div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">Learning Potential</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            {[
+              { value: '20+', label: 'Projects Completed' },
+              { value: '5+', label: 'Technologies Mastered' },
+              { value: '100%', label: 'Commitment Level' },
+              { value: '∞', label: 'Learning Potential' },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-white/10 rounded-lg p-6 transition-transform duration-300 hover:scale-105 cursor-pointer shadow-md"
+              >
+                <div className="text-3xl font-bold text-accent mb-2">{stat.value}</div>
+                <div className="text-white/80 text-sm uppercase tracking-wide">{stat.label}</div>
+              </div>
+            ))}
           </div>
 
           {/* Main Heading */}
