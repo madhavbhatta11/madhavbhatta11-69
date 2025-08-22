@@ -28,8 +28,8 @@ const CallToAction = () => {
 
         {/* Stats and Text */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Left Column: Stats */}
-          <div className="flex flex-col gap-6">
+          {/* Left Column: Stats 2x2 grid */}
+          <div className="grid grid-cols-2 gap-6">
             {stats.map((stat) => (
               <div
                 key={stat.label}
