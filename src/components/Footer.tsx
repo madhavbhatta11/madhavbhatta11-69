@@ -3,7 +3,7 @@ import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github, BrandWhatsapp 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Social links — includes WhatsApp
+  // Social links
   const socialLinks = [
     { icon: Instagram, href: 'https://instagram.com/madhav__bhatta', label: 'Instagram' },
     { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
@@ -11,10 +11,9 @@ const Footer = () => {
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
-    { icon: BrandWhatsapp, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }, // WhatsApp
+    { icon: BrandWhatsapp, href: 'https://wa.me/9779868869289', label: 'WhatsApp' },
   ];
 
-  // Quick links — currently without Photography
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Portfolio', href: '#portfolio' },
@@ -41,6 +40,7 @@ const Footer = () => {
           <div className="flex gap-4 mb-6 md:mb-0">
             {socialLinks.map((social) => {
               const Icon = social.icon;
+              if (!Icon) return null; // Safety check for SSR
               return (
                 <a
                   key={social.label}
