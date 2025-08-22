@@ -3,7 +3,7 @@ import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github, BrandWhatsapp 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Social links — safe URLs
+  // Social links — includes WhatsApp
   const socialLinks = [
     { icon: Instagram, href: 'https://instagram.com/madhav__bhatta', label: 'Instagram' },
     { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
@@ -14,11 +14,10 @@ const Footer = () => {
     { icon: BrandWhatsapp, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }, // WhatsApp
   ];
 
-  // Quick links including Photography
+  // Quick links — currently without Photography
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Photography', href: '#photography' }, // Added Photography
     { label: 'Skills', href: '#skills' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
