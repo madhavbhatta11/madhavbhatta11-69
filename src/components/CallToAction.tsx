@@ -21,9 +21,15 @@ const CallToAction = () => {
       </div>
 
       <div className="container-section relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Heading */}
+        <h2 className="text-4xl md:text-6xl font-bold mb-12 text-left tracking-tight animate-fade-in">
+          Let's Build Something <span className="text-accent">Together</span>
+        </h2>
+
+        {/* Stats and Text */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Left Column: Stats */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="flex flex-col gap-6">
             {stats.map((stat) => (
               <div
                 key={stat.label}
@@ -37,27 +43,22 @@ const CallToAction = () => {
             ))}
           </div>
 
-          {/* Right Column: Text + Button */}
-          <div className="text-justify animate-fade-in">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-left">
-              Let's Build Something <span className="text-accent">Together</span>
-            </h2>
-
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light">
-              Open to internships, collaborations, and innovative projects. Whether you're looking 
-              for a passionate developer, a creative problem-solver, or someone eager to push the 
-              boundaries of technology, I'm ready to contribute to your next big idea.
-            </p>
-
-            <div className="flex justify-center lg:justify-start">
-              <button 
-                onClick={scrollToContact}
-                className="btn-tech text-lg px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg"
-              >
-                Contact Me
-              </button>
-            </div>
+          {/* Right Column: Paragraph */}
+          <div className="text-justify text-gray-300 leading-relaxed">
+            Open to internships, collaborations, and innovative projects. Whether you're looking
+            for a passionate developer, a creative problem-solver, or someone eager to push the
+            boundaries of technology, I'm ready to contribute to your next big idea.
           </div>
+        </div>
+
+        {/* Contact Me Button Centered */}
+        <div className="flex justify-center">
+          <button 
+            onClick={scrollToContact}
+            className="btn-tech text-lg px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg"
+          >
+            Contact Me
+          </button>
         </div>
       </div>
     </section>
