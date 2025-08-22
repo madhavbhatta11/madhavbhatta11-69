@@ -3,8 +3,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import ecommerceImg from '@/assets/project-ecommerce.jpg';
 import taskManagerImg from '@/assets/new-project-image.jpg';
 import stockPredictorImg from '@/assets/project-stockpredictor.jpg';
@@ -102,31 +105,32 @@ const Portfolio = () => {
     ]
   };
 
-  const carouselRef = useRef<any>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [api, setApi] = useState<CarouselApi>();
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-  const startAutoScroll = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      if (carouselRef.current?.api) {
-        carouselRef.current.api.scrollNext();
-      }
+  // Auto-scroll
+  useEffect(() => {
+    if (!api) return;
+    const id = setInterval(() => {
+      api.scrollNext();
     }, 4000);
-  };
+    setIntervalId(id);
+    return () => clearInterval(id);
+  }, [api]);
 
   const stopAutoScroll = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
+    if (intervalId) clearInterval(intervalId);
+    setIntervalId(null);
   };
 
-  useEffect(() => {
-    startAutoScroll();
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, []);
+  const startAutoScroll = () => {
+    if (!api) return;
+    if (intervalId) clearInterval(intervalId);
+    const id = setInterval(() => {
+      api.scrollNext();
+    }, 4000);
+    setIntervalId(id);
+  };
 
   const ProjectCard = ({ title, description, image, github, demo }: { 
     title: string; 
@@ -185,7 +189,7 @@ const Portfolio = () => {
 
         <div className="relative max-w-6xl mx-auto">
           <Carousel 
-            ref={carouselRef}
+            setApi={setApi}
             className="w-full"
             opts={{
               align: "start",
@@ -201,30 +205,24 @@ const Portfolio = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div 
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
-              onClick={() => {
-                stopAutoScroll();
-                if (carouselRef.current?.api) {
-                  carouselRef.current.api.scrollPrev();
-                }
-              }}
+
+            {/* Navigation buttons */}
+            <CarouselPrevious
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center z-10"
+              onClick={stopAutoScroll}
+              onMouseEnter={stopAutoScroll}
               onMouseLeave={startAutoScroll}
             >
               <ChevronLeft className="h-6 w-6" />
-            </div>
-            <div 
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center cursor-pointer z-10"
-              onClick={() => {
-                stopAutoScroll();
-                if (carouselRef.current?.api) {
-                  carouselRef.current.api.scrollNext();
-                }
-              }}
+            </CarouselPrevious>
+            <CarouselNext
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white border-0 shadow-lg rounded-full flex items-center justify-center z-10"
+              onClick={stopAutoScroll}
+              onMouseEnter={stopAutoScroll}
               onMouseLeave={startAutoScroll}
             >
               <ChevronRight className="h-6 w-6" />
-            </div>
+            </CarouselNext>
           </Carousel>
         </div>
       </div>
