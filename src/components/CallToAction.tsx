@@ -7,8 +7,8 @@ const CallToAction = () => {
   };
 
   const stats = [
-    { value: '20+', label: 'Projects Completed' },
-    { value: '5+', label: 'Technologies Mastered' },
+    { value: '17+', label: 'Projects Completed' },
+    { value: '7+', label: 'Technologies learned' },
     { value: '100%', label: 'Commitment Level' },
     { value: '∞', label: 'Learning Potential' },
   ];
@@ -38,8 +38,8 @@ const CallToAction = () => {
 
         {/* Text Content Full Width */}
         <div className="animate-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Let's Build Something <span className="text-accent">Together</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-left">
+            Let's Build Something <span className="text-accent">-Together</span>
           </h2>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light">
@@ -48,7 +48,8 @@ const CallToAction = () => {
             boundaries of technology, I'm ready to contribute to your next big idea.
           </p>
 
-          <div>
+          {/* Centered Button */}
+          <div className="flex justify-center">
             <button 
               onClick={scrollToContact}
               className="btn-tech text-lg px-8 py-4 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg"
