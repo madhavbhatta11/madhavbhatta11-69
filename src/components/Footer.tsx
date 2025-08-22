@@ -3,7 +3,7 @@ import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github, BrandWhatsapp 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Social links — safe URLs
+  // Social links
   const socialLinks = [
     { icon: Instagram, href: 'https://instagram.com/madhav__bhatta', label: 'Instagram' },
     { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
@@ -11,14 +11,12 @@ const Footer = () => {
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
-    { icon: BrandWhatsapp, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }, // WhatsApp
+    { icon: BrandWhatsapp, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }, // Your Nepal number
   ];
 
-  // Quick links including Photography
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Photography', href: '#photography' }, // Added Photography
     { label: 'Skills', href: '#skills' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
@@ -43,16 +41,14 @@ const Footer = () => {
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
-                <a
+                <div
                   key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full flex items-center justify-center transition-colors duration-200"
+                  onClick={() => window.open(social.href, '_blank', 'noopener,noreferrer')}
+                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-200"
                   aria-label={social.label}
                 >
                   <Icon className="w-5 h-5" />
-                </a>
+                </div>
               );
             })}
           </div>
