@@ -3,6 +3,7 @@ import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github } from 'lucide-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // Social links — safe URLs without www
   const socialLinks = [
     { icon: Instagram, href: 'https://instagram.com/madhav__bhatta', label: 'Instagram' },
     { icon: Facebook, href: 'https://facebook.com/madhavbhatta11', label: 'Facebook' },
@@ -10,7 +11,6 @@ const Footer = () => {
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
-    { icon: Instagram, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }, // WhatsApp link
   ];
 
   const quickLinks = [
@@ -23,7 +23,9 @@ const Footer = () => {
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
