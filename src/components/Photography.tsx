@@ -54,14 +54,14 @@ const Photography = () => {
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-6xl mx-auto">
           <Carousel className="w-full">
             <CarouselContent>
               {photos.map((photo) => (
                 <CarouselItem key={photo.id}>
                   <div className="flex justify-center">
                     <div className="relative group">
-                      <div className="aspect-[4/3] w-full max-w-3xl overflow-hidden rounded-lg shadow-lg">
+                      <div className="aspect-[4/3] w-full max-w-5xl overflow-hidden rounded-lg shadow-lg">
                         <img
                           src={photo.src}
                           alt={photo.alt}

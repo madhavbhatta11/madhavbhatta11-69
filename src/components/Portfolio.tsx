@@ -1,4 +1,12 @@
 import { ExternalLink, Github } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { useEffect, useRef } from 'react';
 import ecommerceImg from '@/assets/project-ecommerce.jpg';
 import taskManagerImg from '@/assets/new-project-image.jpg';
 import stockPredictorImg from '@/assets/project-stockpredictor.jpg';
@@ -96,6 +104,18 @@ const Portfolio = () => {
     ]
   };
 
+  const carouselRef = useRef<any>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (carouselRef.current?.api) {
+        carouselRef.current.api.scrollNext();
+      }
+    }, 4000); // Auto-scroll every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const ProjectCard = ({ title, description, image, github, demo }: { 
     title: string; 
     description: string; 
@@ -103,25 +123,25 @@ const Portfolio = () => {
     github: string; 
     demo: string; 
   }) => (
-    <div className="project-card group">
-      <div className="relative overflow-hidden">
+    <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group max-w-sm mx-auto">
+      <div className="relative overflow-hidden h-48">
         <img 
           src={image} 
           alt={title}
-          className="project-card-image w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="project-card-content">
-        <h3 className="heading-project mb-2">{title}</h3>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold mb-2 text-foreground">{title}</h3>
         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
           {description}
         </p>
         <div className="flex gap-3">
-          <a href={github} className="btn-outline flex items-center gap-2">
+          <a href={github} className="flex items-center gap-2 px-4 py-2 border border-border rounded-md hover:bg-accent transition-colors text-sm">
             <Github className="w-4 h-4" />
             Code
           </a>
-          <a href={demo} className="btn-tech flex items-center gap-2">
+          <a href={demo} className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm">
             <ExternalLink className="w-4 h-4" />
             Demo
           </a>
@@ -151,12 +171,27 @@ const Portfolio = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 max-w-4xl mx-auto">
-          {allProjects.map((project, index) => (
-            <div key={index} className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-              <ProjectCard {...project} />
-            </div>
-          ))}
+        <div className="relative max-w-6xl mx-auto">
+          <Carousel 
+            ref={carouselRef}
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {allProjects.map((project, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <ProjectCard {...project} />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 bg-white/90 hover:bg-white border-0 shadow-lg" />
+            <CarouselNext className="right-4 bg-white/90 hover:bg-white border-0 shadow-lg" />
+          </Carousel>
         </div>
       </div>
     </section>
