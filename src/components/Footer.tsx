@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Twitter, Linkedin, Github,WhatsApp } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,13 +11,13 @@ const Footer = () => {
     { icon: Twitter, href: 'https://twitter.com/madhavbhatta11', label: 'Twitter' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madhavbhatta11', label: 'LinkedIn' },
     { icon: Github, href: 'https://github.com/madhavbhatta11', label: 'GitHub' },
-    { icon: () => <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M..."/></svg>, href: 'https://wa.me/9779868869289', label: 'WhatsApp' }
-
+    { icon: WhatsAppIcon, href: 'https://wa.me/9779868869289', label: 'WhatsApp' },
   ];
 
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Photography', href: '#photography' },
     { label: 'Skills', href: '#skills' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
@@ -36,7 +36,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright */}
           <div className="mb-6 md:mb-0">
-            <p className="text-sm">© {currentYear} Madhav Bhatta. All rights reserved.</p>
+            <p className="text-sm">© {currentYear} Madhav Bhatta.All rights reserved.</p>
           </div>
 
           {/* Social Media Icons */}
