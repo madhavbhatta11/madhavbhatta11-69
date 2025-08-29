@@ -14,7 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      unique_visitors: {
+        Row: {
+          first_visit: string
+          id: string
+          visitor_ip: string
+        }
+        Insert: {
+          first_visit?: string
+          id?: string
+          visitor_ip: string
+        }
+        Update: {
+          first_visit?: string
+          id?: string
+          visitor_ip?: string
+        }
+        Relationships: []
+      }
+      visitor_stats: {
+        Row: {
+          created_at: string
+          id: string
+          total_visitors: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          total_visitors?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          total_visitors?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      website_ratings: {
+        Row: {
+          created_at: string
+          id: string
+          rating: number
+          updated_at: string
+          visitor_ip: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          rating: number
+          updated_at?: string
+          visitor_ip: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          rating?: number
+          updated_at?: string
+          visitor_ip?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
