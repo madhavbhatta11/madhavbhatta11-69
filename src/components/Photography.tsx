@@ -33,7 +33,7 @@ const Photography = () => {
 
   const updateCenter = () => {
     if (!api) return;
-    const inView = api.slidesInView(true);
+    const inView = api.slidesInView();
     if (inView.length > 0) {
       const middle = inView[Math.floor(inView.length / 2)];
       setCenterIndex(middle);
