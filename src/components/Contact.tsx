@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Github, Linkedin, Instagram, Mail, Send } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, Send, Star, Users, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { useVisitorTracking } from '@/hooks/useVisitorTracking';
+import { useRating } from '@/hooks/useRating';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -15,6 +17,8 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { visitorCount } = useVisitorTracking();
+  const { currentRating, averageRating, totalRatings, hasRated, submitRating } = useRating();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -82,9 +86,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {/* Contact Form */}
-          <Card className="animate-slide-up bg-transparent border border-gray-300/20 shadow-none">
+          <Card className="animate-slide-up bg-transparent border border-gray-300/20 shadow-none lg:col-span-2">
             <CardHeader>
               <h3 className="text-2xl font-bold text-primary">Send Message</h3>
               <p className="text-muted-foreground">
@@ -154,8 +158,51 @@ const Contact = () => {
             </CardContent>
           </Card>
 
+          {/* Rating Box */}
+          <Card className="animate-fade-in bg-white/20 backdrop-blur-md border border-gray-300/20 shadow-none">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <Star className="w-6 h-6 text-yellow-500" />
+                <h3 className="text-xl font-bold text-primary">Rate Me</h3>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-center justify-center gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      onClick={() => submitRating(star)}
+                      className={`p-1 transition-all duration-200 hover:scale-110 ${
+                        star <= currentRating 
+                          ? 'text-yellow-500' 
+                          : 'text-gray-300 hover:text-yellow-400'
+                      }`}
+                    >
+                      <Star 
+                        className="w-8 h-8" 
+                        fill={star <= currentRating ? 'currentColor' : 'none'}
+                      />
+                    </button>
+                  ))}
+                </div>
+                {totalRatings > 0 && (
+                  <div className="text-center text-sm text-muted-foreground">
+                    <p>Average: {averageRating.toFixed(1)} ⭐</p>
+                    <p>({totalRatings} rating{totalRatings !== 1 ? 's' : ''})</p>
+                  </div>
+                )}
+                {hasRated && (
+                  <p className="text-center text-xs text-muted-foreground">
+                    Click stars to update your rating
+                  </p>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Contact Info */}
-          <div className="animate-fade-in space-y-8">
+          <div className="animate-fade-in space-y-8 lg:col-span-2">
             <div>
               <h3 className="text-2xl font-bold text-primary mb-4">Get In Touch</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
@@ -199,6 +246,30 @@ const Contact = () => {
               </div>
             </div>
           </div>
+
+          {/* Visitors Box */}
+          <Card className="animate-fade-in bg-white/20 backdrop-blur-md border border-gray-300/20 shadow-none">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-2">
+                <Eye className="w-6 h-6 text-blue-500" />
+                <h3 className="text-xl font-bold text-primary">Visitors</h3>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">
+                  {visitorCount.toLocaleString()}
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Total unique visitors
+                </p>
+                <div className="flex items-center justify-center gap-1 mt-2 text-xs text-muted-foreground">
+                  <Users className="w-4 h-4" />
+                  <span>Thank you for visiting!</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
